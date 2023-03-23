@@ -16,14 +16,13 @@ double osm_operation_time(unsigned int iterations)
     struct tm local = *std::localtime(&now);
     gettimeofday (tv_start, &local);
     int num = 0;
-    for (int i = 0; i<iterations; i++){
+    for (unsigned int i = 0; i<iterations; i++){
         num + ONE;num + ONE;num + ONE;
         num + ONE;num + ONE;num + ONE;
         num + ONE;num + ONE;num + ONE;
     }
     gettimeofday (tv_end, &local);
-    int res  = tv_end->tv_usec - tv_start->tv_usec;
-    return (res * MSFACTOR) / (double) (UNROOL*iterations);
+    return calc_res(tv_start, tv_end, iterations);
 }
 
 void empty_function(){}
@@ -41,8 +40,7 @@ double osm_function_time(unsigned int iterations)
         empty_function();empty_function();empty_function();
     }
     gettimeofday (tv_end, &local);
-    int res  = tv_end->tv_usec - tv_start->tv_usec;
-    return (res * MSFACTOR) / (double) (UNROOL*iterations);
+    return calc_res(tv_start, tv_end, iterations);
 }
 
 double osm_syscall_time(unsigned int iterations)
@@ -56,8 +54,7 @@ double osm_syscall_time(unsigned int iterations)
         OSM_NULLSYSCALL;
     }
     gettimeofday (tv_end, &local);
-    int res  = tv_end->tv_usec - tv_start->tv_usec;
-    return (res * MSFACTOR) / (double) (UNROOL*iterations);
+    return calc_res(tv_start, tv_end, iterations);
 }
 
 
