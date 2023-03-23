@@ -5,8 +5,8 @@
 #include <ctime>
 #include <sys/time.h>
 #define UNROOL 9
-#define NUM 2
 #define MSFACTOR 1000
+#define ONE 1
 
 double osm_operation_time(unsigned int iterations)
 {
@@ -15,10 +15,11 @@ double osm_operation_time(unsigned int iterations)
     std::time_t now = std::time(nullptr);
     struct tm local = *std::localtime(&now);
     gettimeofday (tv_start, &local);
+    int num = 0;
     for (int i = 0; i<iterations; i++){
-        NUM + NUM;NUM + NUM;NUM + NUM;
-        NUM + NUM;NUM + NUM;NUM + NUM;
-        NUM + NUM;NUM + NUM;NUM + NUM;
+        num + ONE;num + ONE;num + ONE;
+        num + ONE;num + ONE;num + ONE;
+        num + ONE;num + ONE;num + ONE;
     }
     gettimeofday (tv_end, &local);
     int res  = tv_end->tv_usec - tv_start->tv_usec;
