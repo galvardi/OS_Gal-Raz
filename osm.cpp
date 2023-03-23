@@ -5,7 +5,8 @@
 #include <ctime>
 #include <sys/time.h>
 #define UNROOL 9
-#define MSFACTOR 1000
+#define MSFACTOR 1e3
+#define NSFACTOR 1e9
 #define ONE 1
 
 double osm_operation_time(unsigned int iterations)
