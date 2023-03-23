@@ -9,6 +9,13 @@
 #define NSFACTOR 1e9
 #define ONE 1
 
+double calc_res(timeval* start, timeval* end, int iterations){
+    unsigned int sec_diff = (end->tv_sec - start->tv_sec) * NSFACTOR;
+    int msec_dff = (end->tv_usec - start->tv_usec) * MSFACTOR;
+    return (sec_diff + msec_dff) / (double) (iterations * UNROOL);
+}
+
+
 double osm_operation_time(unsigned int iterations)
 {
     timeval *tv_start = new timeval;
