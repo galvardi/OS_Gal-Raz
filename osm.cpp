@@ -35,7 +35,9 @@ double osm_function_time(unsigned int iterations)
     struct tm local = *std::localtime(&now);
     gettimeofday (tv_start, &local);
     for (int i = 0; i<iterations; i++){
-        empty_function();
+        empty_function();empty_function();empty_function();
+        empty_function();empty_function();empty_function();
+        empty_function();empty_function();empty_function();
     }
     gettimeofday (tv_end, &local);
     int res  = tv_end->tv_usec - tv_start->tv_usec;
