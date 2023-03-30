@@ -22,51 +22,54 @@ double calc_res(timeval* start, timeval* end, unsigned long iterations){
 
 double osm_operation_time(unsigned int iterations)
 {
-    timeval *tv_start = new timeval;
-    timeval *tv_end = new timeval;
-    std::time_t now = std::time(nullptr);
-    struct tm local = *std::localtime(&now);
-    gettimeofday (tv_start, &local);
+    struct timeval tv_start{}, tv_end{};
+    if (gettimeofday (&tv_start, nullptr) == -1){
+        return -1;
+    }
     int num = 0;
     for (unsigned int i = 0; i<iterations; i++){
         OPERATION;OPERATION;OPERATION;
         OPERATION;OPERATION;OPERATION;
         OPERATION;OPERATION;OPERATION;
     }
-    gettimeofday (tv_end, &local);
-    return calc_res(tv_start, tv_end, iterations);
+    if (gettimeofday (&tv_end, nullptr) == -1){
+        return -1;
+    }
+    return calc_res(&tv_start, &tv_end, iterations);
 }
 
 void empty_function(){}
 
 double osm_function_time(unsigned int iterations)
 {
-    timeval *tv_start = new timeval;
-    timeval *tv_end = new timeval;
-    std::time_t now = std::time(nullptr);
-    struct tm local = *std::localtime(&now);
-    gettimeofday (tv_start, &local);
+    struct timeval tv_start{}, tv_end{};
+    if (gettimeofday (&tv_start, nullptr) == -1){
+        return -1;
+    }
     for (unsigned int i = 0; i<iterations; i++){
         empty_function();empty_function();empty_function();
         empty_function();empty_function();empty_function();
         empty_function();empty_function();empty_function();
     }
-    gettimeofday (tv_end, &local);
-    return calc_res(tv_start, tv_end, iterations);
+    if (gettimeofday (&tv_end, nullptr) == -1){
+        return -1;
+    }
+    return calc_res(&tv_start, &tv_end, iterations);
 }
 
 double osm_syscall_time(unsigned int iterations)
 {
-    timeval *tv_start = new timeval;
-    timeval *tv_end = new timeval;
-    std::time_t now = std::time(nullptr);
-    struct tm local = *std::localtime(&now);
-    gettimeofday (tv_start, &local);
+    struct timeval tv_start{}, tv_end{};
+    if (gettimeofday (&tv_start, nullptr) == -1){
+        return -1;
+    }
     for (unsigned int i = 0; i<iterations; i++){
         OSM_NULLSYSCALL;
     }
-    gettimeofday (tv_end, &local);
-    return calc_res(tv_start, tv_end, iterations);
+    if (gettimeofday (&tv_end, nullptr) == -1){
+        return -1;
+    }
+    return calc_res(&tv_start, &tv_end, iterations);
 }
 
 
