@@ -20,7 +20,6 @@ double calc_res(timeval* start, timeval* end, unsigned long iterations){
     UNROOL);
 }
 
-
 double osm_operation_time(unsigned int iterations)
 {
     timeval *tv_start = new timeval;

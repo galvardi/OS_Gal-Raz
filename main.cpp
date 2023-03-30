@@ -3,7 +3,7 @@
 //
 #include <iostream>
 #include "osm.h"
-#define ITER 1e8
+#define ITER 1e9
 
 int main(){
     double one_operation_time = osm_operation_time(ITER);
